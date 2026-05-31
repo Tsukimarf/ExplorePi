@@ -165,7 +165,7 @@ CREATE TABLE IF NOT EXISTS offers (
     buying_issuer   VARCHAR(128),
     amount          NUMERIC(20,7) NOT NULL,
     price_n         BIGINT        NOT NULL,
-    price_d         BIGINT        NOT NULL,
+    price_d         BIGINT        NOT NULL CHECK (price_d > 0),
     price           NUMERIC(20,10) GENERATED ALWAYS AS (price_n::NUMERIC / NULLIF(price_d,0)) STORED,
     flags           SMALLINT      NOT NULL DEFAULT 0,
     last_modified   BIGINT,
