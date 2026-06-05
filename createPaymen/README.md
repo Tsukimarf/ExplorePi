@@ -1,4 +1,4 @@
-# ExplorePi 🥧
+# ExplorePi
 
 > A Raspberry Pi project-sharing platform with Pi Network blockchain integration — claim rewards, send Pi, and sync on-chain events to a database.
 
@@ -544,4 +544,4 @@ chore/dependency-update
 
 This project is licensed under the **MIT License** — see [LICENSE](./LICENSE) for full terms.
 
-© 2026 Tsuki (Tsukimarf / arifinahmad99-cloud)
+© 2026
