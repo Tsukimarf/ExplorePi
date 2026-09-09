@@ -18,8 +18,8 @@
 --   website/app/[lang]/@pibrowser/stream/payment.jsx    (live payment stream)
 --
 -- Apply after the base schema:
---   psql -U postgres -d explorepi -f schema.sql
---   psql -U postgres -d explorepi -f explorepi_payment_update.sql
+--   psql -U postgres -d explorepi -f ../../createPaymen/schema.sql
+--   psql -U postgres -d explorepi -f paumentv2.sql
 -- =============================================================================
 
 BEGIN;
