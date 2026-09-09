@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS account_profiles (
 CREATE TABLE IF NOT EXISTS account_metadata (
   id              VARCHAR(36)      NOT NULL DEFAULT (UUID()),
   account_id      VARCHAR(36)      NOT NULL,
-  meta_key        VARCHAR(128)     NOT NULL,
+  meta_key        VARCHAR(128)     CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   meta_value      TEXT                 NULL,
   source          ENUM('app','chain') NOT NULL DEFAULT 'app',
   created_at      DATETIME         NOT NULL DEFAULT CURRENT_TIMESTAMP,
