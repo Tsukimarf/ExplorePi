@@ -190,7 +190,7 @@ router.post('/webhooks/pi', express.raw({ type: 'application/json' }), async (re
             // MAX_RETRIES) or triaged from the dead-letter query. Returning
             // 500 here would just make the provider hammer us with retries
             // for what might be a permanent, non-transient failure.
-            return res.status(200).json({ status: 'failed', eventType })
+            return res.status(500).json({ status: 'failed', eventType })
         }
     } catch (err) {
         // Failure before/around the claim itself (DB unreachable, etc.) —
