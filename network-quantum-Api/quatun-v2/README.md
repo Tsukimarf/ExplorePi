@@ -10,7 +10,7 @@ Stack: **Node.js · Express · MySQL · stellar-sdk (Soroban/Horizon)**
 ```bash
 npm install
 cp .env.example .env   # fill in your values
-mysql -u root -p < schema.sql
+mysql -u root -p < ../schema.sql
 npm start
 ```
 
