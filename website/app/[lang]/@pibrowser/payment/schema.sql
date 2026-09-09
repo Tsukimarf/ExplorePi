@@ -96,7 +96,7 @@ BEGIN
         txid         = COALESCE(NEW.txid, txid),
         completed_at = CASE WHEN v_status = 'completed' THEN NOW() ELSE completed_at END
     WHERE payment_id = NEW.payment_id
-      AND status NOT IN ('cancelled', 'error');
+      AND status IN ('approved', 'pending_completion', 'partially_paid');
 
     IF NOT FOUND THEN
         RAISE EXCEPTION 'trg_apply_installment_totals: payment % is cancelled/error, cannot apply installment', NEW.payment_id;
