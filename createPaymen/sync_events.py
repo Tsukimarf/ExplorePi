@@ -45,7 +45,7 @@ def decode_scval(raw_b64: str):
     """Decode Soroban ScVal base64 → Python native."""
     try:
         xdr = base64.b64decode(raw_b64)
-        val = scval.from_xdr(xdr.hex())
+        val = scval.from_xdr(raw_b64)
         return scval.scval_to_native(val)
     except Exception:
         return raw_b64   # fallback raw
