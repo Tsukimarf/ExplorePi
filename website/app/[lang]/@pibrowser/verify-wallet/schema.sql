@@ -140,7 +140,7 @@ JOIN (
 ON DUPLICATE KEY UPDATE
   value = VALUES(value),
   content_hash = VALUES(content_hash),
-  version = translations.version + 1,
+  version = IF(translations.content_hash = VALUES(content_hash), translations.version, translations.version + 1),
   updated_by = VALUES(updated_by);
 
 INSERT INTO schema_migrations (version, description) VALUES
