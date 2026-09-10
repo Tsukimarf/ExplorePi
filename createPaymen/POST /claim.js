@@ -19,7 +19,7 @@ router.post('/claim', async (req, res) => {
     const { paymentId, txid } = await rewardUser(userUid, 3.1415, 'ExplorePi daily claim', projectId)
 
     await db.query(
-      'INSERT INTO claims (uid, project_id, payment_id, txid, claimed_at) VALUES ($1,$2,$3,$4,NOW())',
+'INSERT INTO claims (user_uid, amount, payment_id, txid, claimed_at) VALUES ($1, 3.1415, $3, $4, NOW())',
       [userUid, projectId, paymentId, txid]
     )
 
