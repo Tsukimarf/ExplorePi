@@ -8,7 +8,8 @@ A reference database schema for a Pi/Stellar-style block explorer, covering ledg
 |---|---|
 | `schema.sql` | Postgres `CREATE TABLE` statements, with foreign keys and indexes. |
 | `schema.json` | Same structure as plain JSON, plus one sample record per table. |
-| `models.py` | SQLAlchemy ORM models with relationships. Runnable against SQLite for local testing. |
+| `schema.sql` | Postgres `CREATE TABLE` statements, with foreign keys and indexes. |
+| `schema.json` | Same structure as plain JSON, plus one sample record per table. |
 
 ## Entities
 
