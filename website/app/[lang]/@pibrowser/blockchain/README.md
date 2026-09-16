@@ -8,8 +8,7 @@ A reference database schema for a Pi/Stellar-style block explorer, covering ledg
 |---|---|
 | `schema.sql` | Postgres `CREATE TABLE` statements, with foreign keys and indexes. |
 | `schema.json` | Same structure as plain JSON, plus one sample record per table. |
-| `schema.sql` | Postgres `CREATE TABLE` statements, with foreign keys and indexes. |
-| `schema.json` | Same structure as plain JSON, plus one sample record per table. |
+Remove both duplicated rows, leaving the original schema.sql and schema.json entries once each.
 
 ## Entities
 
