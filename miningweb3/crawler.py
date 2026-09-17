@@ -131,8 +131,11 @@ def crawl_ledger(seq: int):
         try:
             acc_raw = fetch_account(tx_rec["source_account"])
             upsert_account(parse_account(acc_raw))
-        except Exception:
-            pass
+        except requests.HTTPError as e:
+            if e.response is not None and e.response.status_code == 404:
+                logger.warning(f"Account {tx_rec['source_account']} was not found")
+            else:
+                raise
 
 
 def crawl_loop():
