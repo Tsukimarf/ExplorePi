@@ -65,7 +65,7 @@ def parse_block(rec: dict) -> dict:
         "prev_hash":    rec.get("prev_hash"),
         "ledger_seq":   rec["sequence"],
         "closed_at":    datetime.fromisoformat(rec["closed_at"].replace("Z", "")),
-        "tx_count":     rec.get("transaction_count", 0),
+        "tx_count":     rec.get("successful_transaction_count", 0) + rec.get("failed_transaction_count", 0),
         "base_fee":     rec.get("base_fee_in_stroops", 0),
         "base_reserve": rec.get("base_reserve_in_stroops", 0),
         "total_coins":  float(rec.get("total_coins", 0)),
