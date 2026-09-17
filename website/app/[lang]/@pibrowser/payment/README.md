@@ -56,6 +56,27 @@ const db = initModels(new Sequelize(process.env.DATABASE_URL))
 await db.sequelize.sync()
 ```
 
+## API
+
+`api/` is a small read-only Express service exposing this schema over HTTP (blocks, transactions, operations, payments, accounts, network stats). It talks to the **root `database.sql`** schema (the one the actual crawler in `index.js` writes to), not `schema.sql` in this folder.
+
+```bash
+cd api
+cp .env.example .env   # then set DATABASE_URL
+npm install
+npm start               # listens on PORT (default 4000)
+```
+
+Docker:
+
+```bash
+cd api
+docker build -t explorepi-api .
+docker run --rm -p 4000:4000 --env-file .env explorepi-api
+```
+
+Key routes: `GET /health`, `GET /stats`, `GET /blocks`, `GET /blocks/:sequence`, `GET /transactions/:hash`, `GET /transactions/:hash/operations`, `GET /accounts/:address`, `GET /accounts/:address/payments`, `GET /payments?limit=`. Payment routes return objects shaped like `{ from, to, amount, type_i, created_at, ... }` — the same fields `explorer/payment.jsx` already reads off a live Horizon record — so the frontend could switch from Horizon to this API with only the fetch call changed.
+
 ## Notes
 
 `explorer/payment.jsx` currently reads payments **live from Horizon** (`server.payments()`) rather than from a local database — it needs no schema at all to keep working. The `payments` table/model here exists for a future local index (e.g. an ingestion worker that writes Horizon payment streams into Postgres), and its fields intentionally match the shape that component already expects, so an API route backed by these models can return the same JSON without any frontend changes.
