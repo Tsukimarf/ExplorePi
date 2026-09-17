@@ -71,7 +71,7 @@ def block_magic_score(blocks: list[dict]) -> dict:
     """
     counts = [b["tx_count"] for b in blocks[-9:]]
     if len(counts) < 9:
-        return {"error": "Need at least 9 blocks", "score": None}
+        return {"error": "Need at least 9 blocks", "balance_score": None}
 
     grid = _luoshu_3x3()
     total = sum(counts) or 1
