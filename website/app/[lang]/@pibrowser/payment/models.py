@@ -159,7 +159,11 @@ class Payment(Base):
             "asset_code": self.asset_code,
             "asset_issuer": self.asset_issuer,
             "amount": str(self.amount),
-            "created_at": self.created_at.isoformat(),
+            "created_at": (
+                self.created_at.replace(tzinfo=timezone.utc)
+                if self.created_at.tzinfo is None
+                else self.created_at.astimezone(timezone.utc)
+            ).isoformat().replace("+00:00", "Z"),
         }
 
 
