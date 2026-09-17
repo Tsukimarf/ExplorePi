@@ -29,6 +29,8 @@ def crt_shard_index(address: str, num_shards: int = 8) -> int:
     modular arithmetic. Maps an address to shard 0..num_shards-1.
     """
     # Convert address bytes to integer via product of prime residues
+    if not 1 <= num_shards <= 8:
+        raise ValueError("num_shards must be between 1 and 8")
     primes = [3, 5, 7, 11, 13, 17, 19, 23][:num_shards]
     residues = [ord(c) % p for c, p in zip(address[:num_shards], primes)]
 
