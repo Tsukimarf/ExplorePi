@@ -1,0 +1,8 @@
+mysql-connector-python>=8.0.33
+requests>=2.31.0
+python-dotenv>=1.0.0
+
+# quantum_security.py
+cryptography>=42.0.0     # X25519/Ed25519 fallback used when liboqs isn't installed
+pycryptodome>=3.20.0     # AES-256-GCM for QuantumSecureVault
+# liboqs-python           # optional — enables real NIST PQC (Kyber/Dilithium) instead of the classical fallback; requires the liboqs C library
