@@ -1,0 +1,13 @@
+{
+  "name": "@explorepi/pibrowser-payment",
+  "version": "1.0.0",
+  "description": "ExplorePi @pibrowser/payment module — Pi Network payment UI, API routes, and Postgres schema",
+  "private": true,
+  "dependencies": {
+    "next": "^15.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "pg": "^8.13.0",
+    "pi-sdk-js": "^2.0.0"
+  }
+}
