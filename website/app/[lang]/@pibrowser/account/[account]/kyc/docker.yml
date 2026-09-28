@@ -1,0 +1,64 @@
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: explorepi
+      POSTGRES_USER: explorepi
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?isi di .env}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./db/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+    ports:
+      - "127.0.0.1:5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U explorepi"]
+      interval: 10s
+      retries: 5
+    networks: [internal]
+
+  pq-security:
+    build: ./services/pq-security
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: postgresql://explorepi:${POSTGRES_PASSWORD}@db:5432/explorepi
+      BLIND_INDEX_KEY: ${BLIND_INDEX_KEY:?isi di .env}
+      INTERNAL_TOKEN: ${INTERNAL_TOKEN:?isi di .env}
+    volumes:
+      - kms:/run/kms
+    depends_on:
+      db: { condition: service_healthy }
+    networks: [internal]
+
+  api:
+    build: ./api
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: postgresql://explorepi:${POSTGRES_PASSWORD}@db:5432/explorepi
+      PQ_URL: http://pq-security:8000
+      INTERNAL_TOKEN: ${INTERNAL_TOKEN}
+      PORT: "3001"
+    ports:
+      - "127.0.0.1:3001:3001"
+    depends_on:
+      db: { condition: service_healthy }
+      pq-security: { condition: service_started }
+    networks: [internal]
+
+  worker:
+    build: ./services/go-worker
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: postgresql://explorepi:${POSTGRES_PASSWORD}@db:5432/explorepi
+      CHAIN_API_URL: ${CHAIN_API_URL:-}
+    depends_on:
+      db: { condition: service_healthy }
+    networks: [internal]
+
+volumes:
+  pgdata:
+  kms:
+
+networks:
+  internal:
+    driver: bridge
