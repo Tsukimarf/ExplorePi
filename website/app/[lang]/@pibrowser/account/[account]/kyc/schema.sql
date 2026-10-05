@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS pq_keys (
   status      TEXT NOT NULL DEFAULT 'active'
               CHECK (status IN ('active','rotated','revoked')),
   created_at  TIMESTAMPTZ NOT NULL DEFAULT now(),
-  UNIQUE (account_id, version)
+  UNIQUE NULLS NOT DISTINCT (account_id, version)
 );
 CREATE INDEX IF NOT EXISTS idx_pq_keys_active ON pq_keys(account_id) WHERE status = 'active';
 
