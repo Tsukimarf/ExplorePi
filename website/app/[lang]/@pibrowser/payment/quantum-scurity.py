@@ -509,9 +509,9 @@ def security_status() -> dict:
         "hybrid_ecdh": "X25519 + ML-KEM (transition-safe)",
         "nist_pqc_standards": ["FIPS 203 (ML-KEM)", "FIPS 204 (ML-DSA)", "FIPS 202 (SHA-3)"],
         "quantum_threat_model": {
-            "Shor_algorithm": "mitigated by ML-KEM + ML-DSA",
+            "Shor_algorithm": "mitigated by ML-KEM + ML-DSA" if _OQS_AVAILABLE else "not mitigated (X25519/Ed25519 fallback)",
             "Grover_algorithm": "mitigated by SHA3-512 (256-bit PQ security)",
-            "harvest_now_decrypt_later": "mitigated by hybrid key exchange",
+            "harvest_now_decrypt_later": "mitigated by hybrid key exchange" if _OQS_AVAILABLE else "not mitigated (X25519 fallback)",
         },
         "production_ready": _OQS_AVAILABLE,
         "recommendation": (
