@@ -299,7 +299,7 @@ async function snapshotNetworkStats(latestLedger) {
   );
 
   const fees24h = await dbQuery(
-    `SELECT COALESCE(SUM(fee), 0) AS fees FROM transactions
+    `SELECT COALESCE(SUM(fee), 0)::NUMERIC / 10000000 AS fees FROM transactions
      WHERE ledger_closed_at >= NOW() - INTERVAL '24 hours'`
   );
 
