@@ -24,7 +24,7 @@ VALUES
   ('aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa', '11111111-1111-4111-8111-111111111111',
    'pi_payment_demo_001', 'pi_uid_demo_001', 'tsuki_demo',
    'GDEMO1WALLETADDRESSSTELLARXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-   5.0000000, 5.0000000, 'STELLAR_TX_HASH_DEMO_0001', 'ExplorePi Pro subscription',
+   5.0000000, 5.0000000, NULL, 'ExplorePi Pro subscription',
    'completed', 'en'),
   ('bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb', '22222222-2222-4222-8222-222222222222',
    'pi_payment_demo_002', 'pi_uid_demo_002', 'alice_pi',
