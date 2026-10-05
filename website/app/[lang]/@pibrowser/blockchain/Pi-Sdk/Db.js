@@ -94,7 +94,7 @@ export async function getCachedSnapshot(chainId) {
        WHERE chain_id = :chainId AND expires_at > NOW() LIMIT 1`,
       { chainId }
     );
-    return rows[0] ? JSON.parse(rows[0].payload_json) : null;
+    return rows[0] ? (typeof rows[0].payload_json === 'string' ? JSON.parse(rows[0].payload_json) : rows[0].payload_json) : null;
   } catch {
     return null;
   }
