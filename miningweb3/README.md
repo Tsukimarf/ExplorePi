@@ -101,4 +101,4 @@ print(json.dumps(full_mining_report(), indent=2, default=str))
 | `async/await` with `.then()`       | Synchronous with connection pool|
 | `index.js` Horizon fetch loop      | `crawler.py` with `requests`    |
 | No analytics                       | `mining.py` — 5 math modules    |
-| `database.sql` schema only         | `init_schema()` auto-creates DB |
+| `database.sql` schema only         | `init_schema()` creates tables; database must exist |
