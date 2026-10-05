@@ -139,8 +139,8 @@ JOIN (
 ) v ON n.slug = 'verify-wallet'
 ON DUPLICATE KEY UPDATE
   value = VALUES(value),
-  content_hash = VALUES(content_hash),
   version = IF(translations.content_hash = VALUES(content_hash), translations.version, translations.version + 1),
+  content_hash = VALUES(content_hash),
   updated_by = VALUES(updated_by);
 
 INSERT INTO schema_migrations (version, description) VALUES
