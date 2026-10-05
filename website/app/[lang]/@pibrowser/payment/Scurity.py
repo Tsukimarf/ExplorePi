@@ -93,6 +93,12 @@ def validate_request(
     if request.expires_at <= request.timestamp:
         raise InvalidPayment("Invalid payment expiration")
 
+    if request.timestamp > current_time:
+        raise InvalidPayment("Payment request timestamp is in the future")
+
+    if request.expires_at - request.timestamp > DEFAULT_EXPIRY_SECONDS:
+        raise InvalidPayment("Payment request expiration exceeds configured limit")
+
     if current_time > request.expires_at:
         raise InvalidPayment("Payment request has expired")
 
