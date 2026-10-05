@@ -362,7 +362,7 @@ class Crawler extends EventEmitter {
       return;
     }
 
-    const batchTo = Math.min(cursor + CONFIG.BATCH_SIZE, latest);
+    const batchTo = Math.min(cursor + Math.min(CONFIG.BATCH_SIZE, 200), latest);
     await syncLedgerRange(cursor + 1, batchTo);
 
     // Snapshot stats every ~50 ledgers
