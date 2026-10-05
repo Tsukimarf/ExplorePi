@@ -27,11 +27,11 @@ export async function initPiSDK() {
 
   // Dev fallback: pi-sdk-js ESM package, mirrors window.Pi surface
   const mod = await import('pi-sdk-js');
-  const Pi = mod.default ?? mod;
-  Pi.init({ version: PI_VERSION, sandbox: PI_SANDBOX });
+  const { PiSDK } = await import('pi-sdk-js');
+  const Pi = new PiSDK({ version: PI_VERSION, sandbox: PI_SANDBOX });
+  await Pi.init();
   piInstance = Pi;
   return piInstance;
-}
 
 /**
  * Authenticates the user against Pi Network, requesting the scopes
