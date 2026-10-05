@@ -7,7 +7,7 @@ export async function POST(req, { params }) {
   const body = await req.json();
   const { pi_uid, pi_username, to_address, amount, memo, claim_id, metadata } = body;
 
-  if (!pi_uid || !to_address || !amount) {
+  if (!pi_uid || !to_address || !Number.isFinite(Number(amount)) || Number(amount) <= 0) {
     return NextResponse.json(
       { error: 'pi_uid, to_address and amount are required' },
       { status: 400 }
