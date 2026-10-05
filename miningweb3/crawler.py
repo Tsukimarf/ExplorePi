@@ -143,7 +143,7 @@ def crawl_loop():
     logger.info("ExplorePi Python crawler started.")
 
     latest = get_latest_block()
-    cursor = str(latest["ledger_seq"]) if latest else "now"
+    cursor = str(latest["ledger_seq"]) if latest else "0"
 
     while True:
         try:
