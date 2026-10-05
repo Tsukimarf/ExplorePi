@@ -19,7 +19,7 @@ CREATE TABLE accounts (
 CREATE TABLE transactions (
     tx_hash        CHAR(64) PRIMARY KEY,
     ledger_seq     BIGINT NOT NULL REFERENCES ledgers(sequence),
-    source_account VARCHAR(56) NOT NULL REFERENCES accounts(account_id),
+    source_account VARCHAR(56) REFERENCES accounts(account_id),
     fee_paid       INTEGER NOT NULL,
     memo           TEXT,
     result_code    VARCHAR(32) NOT NULL
