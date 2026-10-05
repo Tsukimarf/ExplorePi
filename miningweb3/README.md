@@ -6,7 +6,7 @@ Converted from the original Node.js stack to **Python 3.10+**, with a new
 ## File Structure
 
 ```
-explorePi_python/
+miningweb3/
 ├── crawler.py       # Main crawler (replaces crawler/index.js)
 ├── database.py      # DB layer (replaces Web3 JS database calls)
 ├── mining.py        # Chinese Mathematics data mining
