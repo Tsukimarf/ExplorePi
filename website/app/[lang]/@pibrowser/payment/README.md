@@ -75,7 +75,7 @@ docker build -t explorepi-api .
 docker run --rm -p 4000:4000 --env-file .env explorepi-api
 ```
 
-Key routes: `GET /health`, `GET /stats`, `GET /blocks`, `GET /blocks/:sequence`, `GET /transactions/:hash`, `GET /transactions/:hash/operations`, `GET /accounts/:address`, `GET /accounts/:address/payments`, `GET /payments?limit=`. Payment routes return objects shaped like `{ from, to, amount, type_i, created_at, ... }` — the same fields `explorer/payment.jsx` already reads off a live Horizon record — so the frontend could switch from Horizon to this API with only the fetch call changed.
+Key routes: `GET /health`, `GET /stats`, `GET /blocks`, `GET /blocks/:sequence`, `GET /transactions/:hash`, `GET /transactions/:hash/operations`, `GET /accounts/:address`, `GET /accounts/:address/payments`, `GET /payments?limit=`. Payment routes return `{ from, to, amount, type_i, created_at, ... }`, but integrating them requires replacing the Horizon request and adapting its raw-array response (the component currently reads `res.records`).
 
 ## Notes
 
