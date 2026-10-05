@@ -127,7 +127,7 @@ async function ingestLedger(ledger) {
         ledger.hash,
         ledger.prev_hash,
         ledger.closed_at,
-        ledger.transaction_count,
+        (ledger.successful_transaction_count ?? 0) + (ledger.failed_transaction_count ?? 0),
         ledger.operation_count,
         ledger.fee_pool,
         ledger.base_fee_in_stroops,
