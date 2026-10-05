@@ -10,6 +10,7 @@ KMS_DIR = pathlib.Path(os.environ.get("KMS_DIR", "/run/kms"))
 
 def put(secret_key: bytes) -> str:
     KMS_DIR.mkdir(parents=True, exist_ok=True, mode=0o700)
+    KMS_DIR.chmod(0o700)
     ref = uuid.uuid4().hex
     path = KMS_DIR / ref
     fd = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
