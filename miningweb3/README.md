@@ -39,8 +39,8 @@ python crawler.py      # starts the crawler
 Five classical Chinese mathematical methods applied to blockchain analytics:
 
 ### 1. 余数定理 — Chinese Remainder Theorem
-Shards blockchain addresses across N database partitions using CRT-based
-modular arithmetic for load-balanced storage.
+Computes a deterministic shard index from an address using CRT-inspired
+modular arithmetic; storage partitioning must be implemented by the caller.
 
 ```python
 from mining import crt_shard_index, shard_address_distribution
