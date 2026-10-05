@@ -384,9 +384,9 @@ class HybridKeyExchange:
         Combine PQ and classical shared secrets using SHA3-512.
         Even if one is broken, the combined secret remains secure.
         """
-        material = pq_shared
-        if ec_shared:
-            material = ec_shared + pq_shared
+        if not ec_shared:
+            raise ValueError("ec_shared is required for hybrid key exchange")
+        material = ec_shared + pq_shared
         return pq_hash(material, "sha3_512")
 
 
