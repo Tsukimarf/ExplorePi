@@ -104,6 +104,11 @@ func reconcile(ctx context.Context, pool *pgxpool.Pool) error {
 			continue
 		}
 		var cr chainResp
+		if resp.StatusCode < http.StatusOK || resp.StatusCode >= http.StatusMultipleChoices {
+			resp.Body.Close()
+			log.Printf("chain %s: HTTP %s", it.hash, resp.Status)
+			continue
+		}
 		err = json.NewDecoder(resp.Body).Decode(&cr)
 		resp.Body.Close()
 		if err != nil || (cr.Status != "confirmed" && cr.Status != "failed") {
