@@ -80,7 +80,7 @@ def parse_transaction(rec: dict, ledger_seq: int) -> dict:
         "account":         rec["source_account"],
         "fee_charged":     rec.get("fee_charged", 0),
         "operation_count": rec.get("operation_count", 0),
-        "tx_type":         rec.get("envelope_xdr", "")[:20],
+        "tx_type":         None,
         "result_code":     rec.get("result_code"),
         "created_at":      datetime.fromisoformat(rec["created_at"].replace("Z", "")),
     }
