@@ -23,5 +23,5 @@ curl http://127.0.0.1:3001/health
 
 ## Catatan
 - kms.py hanya untuk development; produksi pakai Vault/KMS.
-- Ganti password role `explorepi_app` di db/schema.sql.
+- Ganti password role `explorepi_app` di schema.sql.
 - Jangan commit file .env.
