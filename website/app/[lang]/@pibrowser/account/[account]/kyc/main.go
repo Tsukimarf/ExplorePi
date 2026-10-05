@@ -97,7 +97,11 @@ func reconcile(ctx context.Context, pool *pgxpool.Pool) error {
 
 	client := &http.Client{Timeout: 10 * time.Second}
 	for _, it := range items {
-		req, _ := http.NewRequestWithContext(ctx, http.MethodGet, fmt.Sprintf("%s/%s", base, it.hash), nil)
+		req, err := http.NewRequestWithContext(ctx, http.MethodGet, fmt.Sprintf("%s/%s", base, it.hash), nil)
+		if err != nil {
+			log.Printf("chain %s: %v", it.hash, err)
+			continue
+		}
 		resp, err := client.Do(req)
 		if err != nil {
 			log.Printf("chain %s: %v", it.hash, err)
