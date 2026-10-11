@@ -1,0 +1,79 @@
+ExplorePi — pi-Sdk-payment module
+Path: website/app/[lang]/@pibrowser/payment/pi-Sdk-payment
+Branch: Tsukimarf-patch-2
+
+=========================================================================
+LICENSE
+=========================================================================
+
+This module is distributed as part of the ExplorePi project and is
+licensed under the Pi Open Source (PiOS) License, consistent with the
+license governing the parent ExplorePi repository. By using, copying,
+modifying, or distributing this module, you agree to the terms below.
+
+1. GRANT OF LICENSE
+   Subject to the conditions in this license, permission is granted,
+   free of charge, to any person obtaining a copy of this module and
+   associated documentation files (the "Software") to use, copy,
+   modify, merge, publish, and distribute copies of the Software for
+   use within the Pi Network ecosystem and Pi-related applications,
+   subject to the restrictions below.
+
+2. PI NETWORK ECOSYSTEM RESTRICTION
+   The Software, and any derivative works, may be used only in
+   connection with the development of applications, tools, or
+   services that operate on or interoperate with the Pi Network
+   blockchain (Mainnet, Testnet, or successor networks). Use of the
+   Software to build products unrelated to the Pi Network ecosystem
+   requires separate written permission from the copyright holder.
+
+3. ATTRIBUTION
+   The above notice, this permission notice, and the attribution
+   below must be included in all copies or substantial portions of
+   the Software.
+
+4. NO WARRANTY
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND
+   NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+   HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY,
+   WHETHER IN AN ACTION OF CONTRACT, TORT, OR OTHERWISE, ARISING
+   FROM, OUT OF, OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+   OTHER DEALINGS IN THE SOFTWARE.
+
+5. SECURITY-SENSITIVE COMPONENTS
+   This module includes cryptographic and post-quantum cryptography
+   (PQC) signing/verification code (pqcPayment.js, security.py,
+   pqc_rotate_payment_keys.py). These components are provided for
+   integration purposes only and carry NO warranty of fitness for
+   any particular security assurance level. Deployers are responsible
+   for independent security review, key management practices, and
+   compliance with applicable export-control regulations before
+   production use.
+
+Copyright (c) 2026 Tsuki (Tsukimarf / arifinahmad99-cloud)
+ExplorePi is licensed under a PiOS license — see the root LICENSE
+file of the ExplorePi repository for the canonical, project-wide
+terms. This file governs the pi-Sdk-payment submodule specifically
+and does not supersede the root license.
+
+=========================================================================
+THIRD-PARTY NOTICES
+=========================================================================
+
+This module depends on the following third-party libraries, each
+under its own license (included by reference; consult each project
+for full license text):
+
+  @noble/post-quantum   (MIT)  — https://github.com/paulmillr/noble-post-quantum
+  @noble/curves         (MIT)  — https://github.com/paulmillr/noble-curves
+  @noble/hashes         (MIT)  — https://github.com/paulmillr/noble-hashes
+  liboqs-python          (MIT)  — https://github.com/open-quantum-safe/liboqs-python
+  PyNaCl                 (Apache-2.0) — https://github.com/pyca/pynacl
+  mysql-connector-python (GPLv2 w/ FOSS exception) — https://github.com/mysql/mysql-connector-python
+  Stellar SDK / pi-backend / pi-sdk-js — per respective upstream licenses
+
+No warranty is made regarding the correctness or security of these
+third-party dependencies; they are used under their published
+license terms.
