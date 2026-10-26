@@ -1,0 +1,8 @@
+mysql-connector-python>=9.3.0   # was >=8.0.33 — fixes CVE-2025-21548, CVE-2025-30714
+requests>=2.32.4                # was >=2.31.0 — fixes CVE-2024-35195, CVE-2024-47081
+python-dotenv>=1.0.0
+
+# quantum_security.py
+cryptography>=50.0.0     # was >=42.0.0 — fixes CVE-2026-39892, CVE-2026-69247 (X25519/Ed25519 fallback used when liboqs isn't installed)
+pycryptodome>=3.20.0     # AES-256-GCM for QuantumSecureVault (3.20.0 already clear of the 3.19.1 OAEP side-channel CVE-2023-52323)
+# liboqs-python           # optional — enables real NIST PQC (Kyber/Dilithium) instead of the classical fallback; requires the liboqs C library
