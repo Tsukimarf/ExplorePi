@@ -1,0 +1,4 @@
+mysql-connector-python>=9.3.0   # was >=8.0.33 — fixes CVE-2025-21548, CVE-2025-30714
+requests>=2.32.4                # was >=2.31.0 — fixes CVE-2024-35195, CVE-2024-47081
+python-dotenv>=1.0.0
+liboqs-python
